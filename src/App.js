@@ -17,6 +17,7 @@ import RestoreIcon from '@material-ui/icons/Restore';
 import ExploreIcon from '@material-ui/icons/Explore';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import Paper from '@material-ui/core/Paper';
 
 import { chats, messages } from './mock-data';
 
@@ -24,18 +25,13 @@ const drawerWidth = 320;
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
-    width: '100%',
-    height: '100%',
-  },
-  appFrame: {
-    zIndex: 1,
-    overflow: 'hidden',
     position: 'relative',
     display: 'flex',
     width: '100%',
+    height: '100%',
   },
   appBar: {
+    position: 'fixed',
     width: `calc(100% - ${drawerWidth}px)`,
   },
   drawerHeader: {
@@ -52,6 +48,40 @@ const styles = theme => ({
     right: theme.spacing.unit * 3,
     bottom: theme.spacing.unit * 3 + 48,
   },
+  chatLayout: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: '64px',
+    height: '100%',
+    overflow: 'hidden',
+  },
+  messagesWrapper: {
+    overflowX: 'scroll',
+    width: '100%',
+    height: '100%',
+    paddingTop: theme.spacing.unit * 3,
+    paddingBottom: '120px',
+  },
+  messageWrapper: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 3}px`,
+  },
+  messageWrapperFromMe: {
+    justifyContent: 'flex-end',
+  },
+  message: {
+    minWidth: '10%',
+    maxWidth: '70%',
+    padding: theme.spacing.unit,
+    marginLeft: theme.spacing.unit * 2,
+  },
+  messageFromMe: {
+    marginRight: theme.spacing.unit * 2,
+    backgroundColor: '#e6dcff',
+  },
   'appBar-left': {
     marginLeft: drawerWidth,
   },
@@ -60,14 +90,10 @@ const styles = theme => ({
   },
   drawerPaper: {
     position: 'relative',
-    width: drawerWidth,
+    width: 320,
+    height: '100%'
   },
   toolbar: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
-  },
 });
 
 class PermanentDrawer extends React.Component {
@@ -110,7 +136,7 @@ class PermanentDrawer extends React.Component {
     );
 
     return (
-      <div className={classes.appFrame}>
+      <div className={classes.root}>
         <AppBar
           position="absolute"
           className={classes.appBar}
@@ -122,9 +148,39 @@ class PermanentDrawer extends React.Component {
           </Toolbar>
         </AppBar>
         {drawer}
-        <main className={classes.content}>
-          <div className={classes.toolbar} />
-          <Typography>{'You think water moves fast? You should see ice.'}</Typography>
+        <main className={classes.chatLayout}>
+          <div className={classes.messagesWrapper}>
+            {messages && messages.map((message, index) => {
+              const isMessageFromMe = message.sender === 'me';
+
+              const userAvatar = (
+                <Avatar>
+                  {message.sender[0]}
+                </Avatar>
+              );
+
+              return (
+                <div key={index} className={[
+                  classes.messageWrapper,
+                  isMessageFromMe ? classes.messageWrapperFromMe : ''
+                ].join(' ')}>
+                  {!isMessageFromMe && userAvatar}
+                  <Paper className={[
+                    classes.message,
+                    isMessageFromMe ? classes.messageFromMe : ''
+                  ].join(' ')}>
+                    <Typography variant="caption">
+                      {message.sender}
+                    </Typography>
+                    <Typography variant="body1">
+                      {message.content}
+                    </Typography>
+                  </Paper>
+                  {isMessageFromMe && userAvatar}
+                </div>
+              );
+            })}
+          </div>
         </main>
       </div>
     );
