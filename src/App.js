@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -109,7 +110,7 @@ const styles = theme => ({
   },
 });
 
-class PermanentDrawer extends React.Component {
+class App extends React.Component {
   render() {
     const { classes } = this.props;
 
@@ -173,15 +174,15 @@ class PermanentDrawer extends React.Component {
               );
 
               return (
-                <div key={index} className={[
+                <div key={index} className={classnames([
                   classes.messageWrapper,
-                  isMessageFromMe ? classes.messageWrapperFromMe : ''
-                ].join(' ')}>
+                  isMessageFromMe && classes.messageWrapperFromMe
+                ])}>
                   {!isMessageFromMe && userAvatar}
-                  <Paper className={[
+                  <Paper className={classnames([
                     classes.message,
-                    isMessageFromMe ? classes.messageFromMe : ''
-                  ].join(' ')}>
+                    isMessageFromMe && classes.messageFromMe
+                  ])}>
                     <Typography variant="caption">
                       {message.sender}
                     </Typography>
@@ -206,4 +207,4 @@ class PermanentDrawer extends React.Component {
   }
 }
 
-export default withStyles(styles)(PermanentDrawer);
+export default withStyles(styles)(App);
