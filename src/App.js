@@ -25,18 +25,12 @@ const styles = theme => ({
   toolbar: theme.mixins.toolbar,
 });
 
-class App extends React.Component {
-  render() {
-    const { classes } = this.props;
-
-    return (
-      <div className={classes.root}>
-        <ChatHeader />
-        <Sidebar chats={chats} />
-        <Chat messages={messages} />
-      </div>
-    );
-  }
-}
+const App = ({ classes }) => (
+  <div className={classes.root}>
+    <ChatHeader />
+    <Sidebar chats={chats} />
+    <Chat messages={messages} />
+  </div>
+);
 
 export default withStyles(styles)(App);
