@@ -13,11 +13,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import Input from '@material-ui/core/Input';
+
 import RestoreIcon from '@material-ui/icons/Restore';
 import ExploreIcon from '@material-ui/icons/Explore';
-import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-import Paper from '@material-ui/core/Paper';
 
 import { chats, messages } from './mock-data';
 
@@ -90,10 +92,21 @@ const styles = theme => ({
   },
   drawerPaper: {
     position: 'relative',
-    width: 320,
+    width: drawerWidth,
     height: '100%'
   },
   toolbar: theme.mixins.toolbar,
+  messageInputWrapper: {
+    position: 'fixed',
+    left: 'auto',
+    right: 0,
+    bottom: 0,
+    width: `calc(100% - ${drawerWidth}px)`,
+    padding: theme.spacing.unit * 3,
+  },
+  messageInput: {
+    padding: theme.spacing.unit * 2,
+  },
 });
 
 class PermanentDrawer extends React.Component {
@@ -180,6 +193,12 @@ class PermanentDrawer extends React.Component {
                 </div>
               );
             })}
+          </div>
+
+          <div className={classes.messageInputWrapper}>
+            <Paper className={classes.messageInput} elevation={6}>
+              <Input fullWidth placeholder="Type your message..." />
+            </Paper>
           </div>
         </main>
       </div>
