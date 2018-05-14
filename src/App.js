@@ -6,15 +6,27 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Avatar from '@material-ui/core/Avatar';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import RestoreIcon from '@material-ui/icons/Restore';
+import ExploreIcon from '@material-ui/icons/Explore';
+
+import { chats, messages } from './mock-data';
 
 const drawerWidth = 320;
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
+    width: '100%',
+    height: '100%',
   },
   appFrame: {
-    height: 430,
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
@@ -28,6 +40,9 @@ const styles = theme => ({
     ...theme.mixins.toolbar,
     paddingLeft: theme.spacing.unit * 3,
     paddingRight: theme.spacing.unit * 3,
+  },
+  chatsList: {
+    overflowY: 'scroll',
   },
   'appBar-left': {
     marginLeft: drawerWidth,
@@ -66,7 +81,20 @@ class PermanentDrawer extends React.Component {
           />
         </div>
         <Divider />
-        <h3>There is no chats yet...</h3>
+        <List className={classes.chatsList}>
+          {chats.map((chat, index) => (
+            <ListItem key={index} button>
+              <ListItemIcon>
+                <Avatar>{chat.title && chat.title[0]}</Avatar>
+              </ListItemIcon>
+              <ListItemText primary={chat.title} />
+            </ListItem>
+          ))}
+        </List>
+        <BottomNavigation showLabels>
+          <BottomNavigationAction label="My Chats" icon={<RestoreIcon />} />
+          <BottomNavigationAction label="Explore" icon={<ExploreIcon />} />
+        </BottomNavigation>
       </Drawer>
     );
 
