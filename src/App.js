@@ -15,6 +15,8 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import RestoreIcon from '@material-ui/icons/Restore';
 import ExploreIcon from '@material-ui/icons/Explore';
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
 
 import { chats, messages } from './mock-data';
 
@@ -43,6 +45,12 @@ const styles = theme => ({
   },
   chatsList: {
     overflowY: 'scroll',
+  },
+  newChatButton: {
+    position: 'absolute',
+    left: 'auto',
+    right: theme.spacing.unit * 3,
+    bottom: theme.spacing.unit * 3 + 48,
   },
   'appBar-left': {
     marginLeft: drawerWidth,
@@ -91,6 +99,9 @@ class PermanentDrawer extends React.Component {
             </ListItem>
           ))}
         </List>
+        <Button variant="fab" color="primary" aria-label="add" className={classes.newChatButton}>
+          <AddIcon />
+        </Button>
         <BottomNavigation showLabels>
           <BottomNavigationAction label="My Chats" icon={<RestoreIcon />} />
           <BottomNavigationAction label="Explore" icon={<ExploreIcon />} />
