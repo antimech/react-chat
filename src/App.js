@@ -1,13 +1,12 @@
 import React from 'react';
 import classnames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
 import Input from '@material-ui/core/Input';
 import Sidebar from './components/Sidebar';
+import ChatHeader from './components/ChatHeader';
 
 import titleInitials from './utils/title-initials';
 
@@ -19,10 +18,6 @@ const styles = theme => ({
     display: 'flex',
     width: '100%',
     height: '100%',
-  },
-  appBar: {
-    position: 'fixed',
-    width: 'calc(100% - 320px)',
   },
   chatLayout: {
     display: 'flex',
@@ -105,17 +100,7 @@ class App extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar
-          position="absolute"
-          className={classes.appBar}
-        >
-          <Toolbar>
-            <Typography variant="title" color="inherit" noWrap>
-              DogeCodes React Chat
-            </Typography>
-          </Toolbar>
-        </AppBar>
-
+        <ChatHeader />
         <Sidebar chats={chats} />
 
         <main className={classes.chatLayout}>
