@@ -113,6 +113,27 @@ const styles = theme => ({
 });
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.messagesWrapper = React.createRef();
+  }
+
+  componentDidMount() {
+    this.scrollDownHistory();
+  }
+
+  componentDidUpdate() {
+    this.scrollDownHistory();
+  }
+
+  scrollDownHistory() {
+    const messagesWrapper = this.messagesWrapper.current;
+
+    if (messagesWrapper) {
+      messagesWrapper.scrollTop = messagesWrapper.scrollHeight;
+    }
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -165,7 +186,7 @@ class App extends React.Component {
         </AppBar>
         {drawer}
         <main className={classes.chatLayout}>
-          <div className={classes.messagesWrapper}>
+          <div className={classes.messagesWrapper} ref={this.messagesWrapper}>
             {messages && messages.map((message, index) => {
               const isMessageFromMe = message.sender === 'me';
 
