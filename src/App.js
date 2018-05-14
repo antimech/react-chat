@@ -1,11 +1,8 @@
 import React from 'react';
-import classnames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Sidebar from './components/Sidebar';
 import ChatHeader from './components/ChatHeader';
 import Chat from './components/Chat';
-
-import titleInitials from './utils/title-initials';
 
 import { chats, messages } from './mock-data';
 
