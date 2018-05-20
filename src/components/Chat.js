@@ -18,7 +18,7 @@ const styles = theme => ({
     overflow: 'hidden',
   },
   messagesWrapper: {
-    overflowX: 'scroll',
+    overflowY: 'scroll',
     width: '100%',
     height: '100%',
     paddingTop: theme.spacing.unit * 3,
