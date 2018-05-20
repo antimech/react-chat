@@ -94,15 +94,15 @@ class Chat extends React.Component {
             );
 
             return (
-              <div key={index} className={classnames([
+              <div key={index} className={classnames(
                 classes.messageWrapper,
                 isMessageFromMe && classes.messageWrapperFromMe
-              ])}>
+              )}>
                 {!isMessageFromMe && userAvatar}
-                <Paper className={classnames([
+                <Paper className={classnames(
                   classes.message,
                   isMessageFromMe && classes.messageFromMe
-                ])}>
+                )}>
                   <Typography variant="caption">
                     {message.sender}
                   </Typography>
