@@ -4,7 +4,7 @@ import classnames from "classnames";
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
-import Input from '@material-ui/core/Input';
+import MessageInput from './MessageInput';
 
 import titleInitials from "../utils/title-initials";
 
@@ -42,17 +42,6 @@ const styles = theme => ({
   messageFromMe: {
     marginRight: theme.spacing.unit * 2,
     backgroundColor: '#e6dcff',
-  },
-  messageInputWrapper: {
-    position: 'fixed',
-    left: 'auto',
-    right: 0,
-    bottom: 0,
-    width: 'calc(100% - 320px)',
-    padding: theme.spacing.unit * 3,
-  },
-  messageInput: {
-    padding: theme.spacing.unit * 2,
   },
 });
 
@@ -116,11 +105,7 @@ class Chat extends React.Component {
           })}
         </div>
 
-        <div className={classes.messageInputWrapper}>
-          <Paper className={classes.messageInput} elevation={6}>
-            <Input fullWidth placeholder="Type your message..." />
-          </Paper>
-        </div>
+        <MessageInput />
       </main>
     )
   }
