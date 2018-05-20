@@ -14,7 +14,7 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: '64px',
-    height: 'calc(100% - 80px)',
+    height: '100%',
     overflow: 'hidden',
   },
   messagesWrapper: {
