@@ -19,7 +19,6 @@ const styles = theme => ({
   'appBar-right': {
     marginRight: 320,
   },
-  toolbar: theme.mixins.toolbar,
 });
 
 const App = ({ classes }) => (
