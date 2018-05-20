@@ -12,7 +12,6 @@ import RestoreIcon from '@material-ui/icons/Restore';
 import ExploreIcon from '@material-ui/icons/Explore';
 import AddIcon from '@material-ui/icons/Add';
 
-
 const styles = theme => ({
   drawerPaper: {
     position: 'relative',
