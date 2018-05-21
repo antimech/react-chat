@@ -5,8 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import Avatar from './Avatar';
 import Paper from '@material-ui/core/Paper';
 
-import titleInitials from "../utils/title-initials";
-
 const styles = theme => ({
   messageWrapper: {
     display: 'flex',
