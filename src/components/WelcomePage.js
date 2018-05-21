@@ -9,6 +9,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
+import SwipeableViews from 'react-swipeable-views';
 
 const styles = theme => ({
   root: {
@@ -64,10 +65,14 @@ class WelcomePage extends React.Component {
                   <Tab label="Register" />
                 </Tabs>
               </AppBar>
-              <div className={classes.tabContent}>
+              <SwipeableViews
+                axis="x-reverse"
+                index={activeTab}
+                className={classes.tabContent}
+              >
                 {activeTab === 0 && <LoginForm />}
                 {activeTab === 1 && <RegisterForm />}
-              </div>
+              </SwipeableViews>
             </Paper>
           </Grid>
         </Grid>
