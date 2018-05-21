@@ -15,7 +15,7 @@ const ChatHeader = ({ classes }) => (
   <AppBar color="primary" className={classes.appBar}>
     <Toolbar>
       <Typography variant="title" color="inherit" noWrap>
-        DogeCodes React Chat
+        React Chat
       </Typography>
     </Toolbar>
   </AppBar>
