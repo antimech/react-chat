@@ -13,12 +13,6 @@ import RegisterForm from './RegisterForm';
 import SwipeableViews from 'react-swipeable-views';
 
 const styles = theme => ({
-  root: {
-    position: 'relative',
-    display: 'flex',
-    width: '100%',
-    height: '100%',
-  },
   appBar: {
     position: 'fixed',
   },
@@ -52,39 +46,37 @@ class WelcomePage extends React.Component {
 
     return (
       <React.Fragment>
-        <div className={classes.root}>
-          <AppBar color="primary" className={classes.appBar}>
-            <Toolbar>
-              <Typography variant="title" color="inherit">
-                React Chat
-              </Typography>
-            </Toolbar>
-          </AppBar>
-          <Grid container justify="center">
-            <Grid item>
-              <Paper className={classes.paper}>
-                <AppBar position="static" color="default">
-                  <Tabs
-                    value={activeTab}
-                    onChange={this.handleTabChange}
-                    fullWidth
-                  >
-                    <Tab label="Login" />
-                    <Tab label="Register" />
-                  </Tabs>
-                </AppBar>
-                <SwipeableViews
-                  axis="x-reverse"
-                  index={activeTab}
-                  className={classes.tabContent}
+        <AppBar color="primary" className={classes.appBar}>
+          <Toolbar>
+            <Typography variant="title" color="inherit">
+              React Chat
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Grid container justify="center">
+          <Grid item>
+            <Paper className={classes.paper}>
+              <AppBar position="static" color="default">
+                <Tabs
+                  value={activeTab}
+                  onChange={this.handleTabChange}
+                  fullWidth
                 >
-                  {activeTab === 0 && <LoginForm onSubmit={login} />}
-                  {activeTab === 1 && <RegisterForm onSubmit={signup} />}
-                </SwipeableViews>
-              </Paper>
-            </Grid>
+                  <Tab label="Login" />
+                  <Tab label="Register" />
+                </Tabs>
+              </AppBar>
+              <SwipeableViews
+                axis="x-reverse"
+                index={activeTab}
+                className={classes.tabContent}
+              >
+                {activeTab === 0 && <LoginForm onSubmit={login} />}
+                {activeTab === 1 && <RegisterForm onSubmit={signup} />}
+              </SwipeableViews>
+            </Paper>
           </Grid>
-        </div>
+        </Grid>
       </React.Fragment>
     );
   }
