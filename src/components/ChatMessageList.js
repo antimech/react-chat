@@ -8,7 +8,11 @@ const styles = theme => ({
     width: '100%',
     height: '100%',
     paddingTop: theme.spacing.unit * 3,
-    paddingBottom: '120px',
+    '&:after': {
+      content: '""',
+      height: '120px',
+      display: 'block',
+    },
   },
 });
 

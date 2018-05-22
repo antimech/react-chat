@@ -2,10 +2,9 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import classnames from "classnames";
 import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
+import Avatar from './Avatar';
 import Paper from '@material-ui/core/Paper';
-
-import titleInitials from "../utils/title-initials";
+import getColor from '../utils/color-from';
 
 const styles = theme => ({
   messageWrapper: {
@@ -33,8 +32,8 @@ const ChatMessage = ({ classes, sender, content }) => {
   const isMessageFromMe = sender === 'me';
 
   const userAvatar = (
-    <Avatar>
-      {titleInitials(sender)}
+    <Avatar colorFrom={sender}>
+      {sender}
     </Avatar>
   );
 
@@ -48,11 +47,14 @@ const ChatMessage = ({ classes, sender, content }) => {
         classes.message,
         isMessageFromMe && classes.messageFromMe
       )}>
-        <Typography variant="caption">
+        <Typography variant="caption" style={{ color: getColor(sender) }}>
           {sender}
         </Typography>
         <Typography variant="body1">
           {content}
+        </Typography>
+        <Typography variant="caption">
+          3 days ago
         </Typography>
       </Paper>
       {isMessageFromMe && userAvatar}
