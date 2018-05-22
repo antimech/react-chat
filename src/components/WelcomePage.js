@@ -44,39 +44,41 @@ class WelcomePage extends React.Component {
     const { activeTab } = this.state;
 
     return (
-      <div className={classes.root}>
-        <AppBar color="primary" className={classes.appBar}>
-          <Toolbar>
-            <Typography variant="title" color="inherit">
-              React Chat
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Grid container justify="center">
-          <Grid item>
-            <Paper className={classes.paper}>
-              <AppBar position="static" color="default">
-                <Tabs
-                  value={activeTab}
-                  onChange={this.handleTabChange}
-                  fullWidth
+      <React.Fragment>
+        <div className={classes.root}>
+          <AppBar color="primary" className={classes.appBar}>
+            <Toolbar>
+              <Typography variant="title" color="inherit">
+                React Chat
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <Grid container justify="center">
+            <Grid item>
+              <Paper className={classes.paper}>
+                <AppBar position="static" color="default">
+                  <Tabs
+                    value={activeTab}
+                    onChange={this.handleTabChange}
+                    fullWidth
+                  >
+                    <Tab label="Login" />
+                    <Tab label="Register" />
+                  </Tabs>
+                </AppBar>
+                <SwipeableViews
+                  axis="x-reverse"
+                  index={activeTab}
+                  className={classes.tabContent}
                 >
-                  <Tab label="Login" />
-                  <Tab label="Register" />
-                </Tabs>
-              </AppBar>
-              <SwipeableViews
-                axis="x-reverse"
-                index={activeTab}
-                className={classes.tabContent}
-              >
-                {activeTab === 0 && <LoginForm />}
-                {activeTab === 1 && <RegisterForm />}
-              </SwipeableViews>
-            </Paper>
+                  {activeTab === 0 && <LoginForm />}
+                  {activeTab === 1 && <RegisterForm />}
+                </SwipeableViews>
+              </Paper>
+            </Grid>
           </Grid>
-        </Grid>
-      </div>
+        </div>
+      </React.Fragment>
     );
   }
 }
