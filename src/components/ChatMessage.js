@@ -4,6 +4,7 @@ import classnames from "classnames";
 import Typography from '@material-ui/core/Typography';
 import Avatar from './Avatar';
 import Paper from '@material-ui/core/Paper';
+import getColor from '../utils/color-from';
 
 const styles = theme => ({
   messageWrapper: {
@@ -46,7 +47,7 @@ const ChatMessage = ({ classes, sender, content }) => {
         classes.message,
         isMessageFromMe && classes.messageFromMe
       )}>
-        <Typography variant="caption">
+        <Typography variant="caption" style={{ color: getColor(sender) }}>
           {sender}
         </Typography>
         <Typography variant="body1">
