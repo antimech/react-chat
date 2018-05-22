@@ -52,6 +52,9 @@ const ChatMessage = ({ classes, sender, content }) => {
         <Typography variant="body1">
           {content}
         </Typography>
+        <Typography variant="caption">
+          3 days ago
+        </Typography>
       </Paper>
       {isMessageFromMe && userAvatar}
     </div>
