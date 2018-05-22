@@ -58,9 +58,7 @@ class RegisterForm extends React.Component {
 
     const { username, password } = this.state;
 
-    console.log('Register:', username.value, password.value);
-
-    // TODO: Fetch
+    this.props.onSubmit(username.value, password.value);
   };
 
   render() {
